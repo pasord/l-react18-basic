@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from 'react'; // 框架的核心包
+import ReactDOM from 'react-dom/client'; // 专门做渲染的相关包
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+  <App/>
+)
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// root.render(
+//   // 严格模式节点暂时去掉，useEffect的执行时机，会有额外的副作用，会检测两次
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>
+// );
