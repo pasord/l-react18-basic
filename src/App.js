@@ -1,7 +1,8 @@
+import CommentList from './pages/commentList'
 function App() {
   return (
     <div className="App">
-      App
+      <CommentList />
     </div>
   );
 }
