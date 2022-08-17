@@ -1,5 +1,5 @@
 import CommentList from './pages/commentList'
-import TodoMvc from './pages/todoMvc'
+import TodoMvc from './pages/todoMvc/hooks'
 function App() {
   return (
     <div className="App">

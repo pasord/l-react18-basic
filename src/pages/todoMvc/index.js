@@ -7,7 +7,6 @@ const { Search } = Input
 
 class TodoMvc extends React.Component {
     state = {
-        keyword: '',
         list: [],
 
         columns: [
@@ -45,6 +44,7 @@ class TodoMvc extends React.Component {
     }
 
     onSearch = async (value) => {
+        console.log('s---:', value);
         const res = await axios.get(`http://localhost:3001/data?q=${value}`)
         this.setState({
             list: res.data
@@ -54,12 +54,6 @@ class TodoMvc extends React.Component {
     handleDelete = async(id) => {
         await axios.delete(`http://localhost:3001/data/${id}`)
         this.loadList()
-    }
-
-    inputChange = (e) => {
-        this.setState({
-            keyword: e.target.value
-        })
     }
 
     loadList = async () => {
@@ -82,8 +76,6 @@ class TodoMvc extends React.Component {
                         allowClear
                         enterButton="搜索"
                         size='large'
-                        value={this.state.keyword}
-                        onChange={this.inputChange}
                         onSearch={this.onSearch}
                     />
                 </div>
