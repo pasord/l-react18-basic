@@ -15,6 +15,7 @@ export function useLocalStorage (key, defaultVal) {
 
 export function useWindowScroll () {
   const [y, setY] = useState(0)
+  console.log('---scroll');
   window.addEventListener('scroll', () => {
     const h = document.documentElement.scrollTop
     setY(h)

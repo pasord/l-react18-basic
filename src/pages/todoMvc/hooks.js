@@ -2,14 +2,17 @@ import { Input, Table, Space, Popconfirm } from 'antd';
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import './index.css'
-import {useLocalStorage} from '../../hooks';
+import {useLocalStorage, useWindowScroll} from '../../hooks';
 
 const { Search } = Input
 
 function TodoMvcHooks () {
     const [list, setList] = useState([])
     const [query, setQuery] = useLocalStorage('query', '')
+    const [y] = useWindowScroll()
     console.log('---TodoMvcHooks');
+
+    console.log(222, y);
 
 
     const loadList = async () => {
