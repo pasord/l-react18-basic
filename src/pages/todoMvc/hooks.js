@@ -2,11 +2,14 @@ import { Input, Table, Space, Popconfirm } from 'antd';
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import './index.css'
+import {useLocalStorage} from '../../hooks';
 
 const { Search } = Input
 
 function TodoMvcHooks () {
     const [list, setList] = useState([])
+    const [query, setQuery] = useLocalStorage('query', '')
+    console.log('---TodoMvcHooks');
 
 
     const loadList = async () => {
@@ -15,9 +18,11 @@ function TodoMvcHooks () {
     }
 
     const onSearch = async (value) => {
-        console.log(111, value);
+        console.log('---Search', value);
+        setQuery(value)
         const res = await axios.get(`http://localhost:3001/data?q=${value}`)
         setList(res.data)
+        console.log('---query', query);
     }
 
     const handleDelete = async(id) => {
@@ -26,7 +31,7 @@ function TodoMvcHooks () {
     }
 
     useEffect(()=> {
-        console.log('useEffect-----');
+        console.log('---useEffect');
         loadList()
     }, [])
 

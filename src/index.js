@@ -5,13 +5,13 @@ import App from './App';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   <App/>
-// )
-
 root.render(
-  // 严格模式节点暂时去掉，useEffect的执行时机，会有额外的副作用，会检测两次
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+  <App/>
+)
+
+// root.render(
+//   // 严格模式节点暂时去掉，useEffect的执行时机，会有额外的副作用，会检测两次
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>
+// );
