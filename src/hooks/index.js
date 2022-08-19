@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export function useLocalStorage (key, defaultVal) {
     const [val, setVal] = useState(defaultVal)
@@ -15,19 +15,25 @@ export function useLocalStorage (key, defaultVal) {
 
 export function useWindowScroll () {
   const [y, setY] = useState(0)
-  const [isInit, setInit] = useState(true)
+  // const isInit = useRef(true)
+  // const [isInit, setInit] = useState(true)
   console.log('---scroll---');
   useEffect(() => {
-    if (isInit) { 
-      setInit(false)
-    } else {
-      console.log('---scroll-listen---');
-      window.addEventListener('scroll', () => {
-        const h = document.documentElement.scrollTop
-        setY(h)
-      })
-    }
-  }, [isInit])
+    // if (isInit) { 
+    //   setInit(false)
+    // } else {
+    //   console.log('---scroll-listen---');
+    //   window.addEventListener('scroll', () => {
+    //     const h = document.documentElement.scrollTop
+    //     setY(h)
+    //   })
+    // }
+    console.log('---scroll-listen---');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollTop
+      setY(h)
+    })
+  }, [])
   return [y]
 }
 
