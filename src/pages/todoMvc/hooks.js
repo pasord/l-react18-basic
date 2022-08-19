@@ -2,17 +2,22 @@ import { Input, Table, Space, Popconfirm } from 'antd';
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import './index.css'
-import {useLocalStorage, useWindowScroll} from '../../hooks';
+import noUseWindowScroll, {useLocalStorage, useWindowScroll} from '../../hooks';
 
 const { Search } = Input
 
+let count = 0
+
 function TodoMvcHooks () {
     const [list, setList] = useState([])
-    const [query, setQuery] = useLocalStorage('query', '')
+    // const [y, setY] = useState(0)
+    const [query, setQuery] = useLocalStorage('query' + count++, '')
     const [y] = useWindowScroll()
+
     console.log('---TodoMvcHooks');
 
-    console.log(222, y);
+    console.log('---scroll-y', y)
+    // console.log('---no', noUseWindowScroll.getY());
 
 
     const loadList = async () => {
@@ -37,6 +42,14 @@ function TodoMvcHooks () {
         console.log('---useEffect');
         loadList()
     }, [])
+
+    // useEffect(() => {
+    //     console.log('---scroll');
+    //     window.addEventListener('scroll', () => {
+    //       const h = document.documentElement.scrollTop
+    //       setY(h)
+    //     })
+    // }, [])
 
     const columns = [
         {
